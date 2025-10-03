@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="shortcut icon" href="loureiro.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Saber - Seu Canal de Conhecimento</title>
+    <style>
+        /* Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #4a69bd);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            background: white;
+            color: #4a69bd;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #f8c291;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1581726707445-75cbe4efc586?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+        
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #e55039;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .btn:hover {
+            background: #eb6e59;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Sobre */
+        .sobre {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        /* Objetivos */
+        .objetivos {
+            padding: 80px 0;
+            background: #f9f9f9;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: #4a69bd;
+        }
+        
+        .sobre-content, .objetivos-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .sobre-text, .objetivos-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .sobre-text h3, .objetivos-text h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .sobre-img, .objetivos-img {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .sobre-img img, .objetivos-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .objetivos-lista {
+            margin-top: 30px;
+        }
+        
+        .objetivo-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .objetivo-icon {
+            background: #4a69bd;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .objetivo-text h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        /* Conteúdos */
+        .conteudos {
+            padding: 80px 0;
+            background: #f9f9f9;
+        }
+        
+        .videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .video-thumb {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .video-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .video-card:hover .video-thumb img {
+            transform: scale(1.1);
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-info h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        /* Por que Inscrever */
+        .inscrever {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2c3e50, #4a69bd);
+            color: white;
+            text-align: center;
+        }
+        
+        .beneficios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .beneficio {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+        
+        .beneficio:hover {
+            transform: translateY(-10px);
+        }
+        
+        .beneficio i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #f8c291;
+        }
+        
+        /* Nova Seção: Vinheta */
+        .vinheta {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .vinheta-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .vinheta-player {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .vinheta-player video {
+            width: 100%;
+            display: block;
+        }
+        
+        .vinheta-texto {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .vinheta-texto p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 30px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px 0 0 30px;
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            padding: 15px 30px;
+            background: #e55039;
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background: #eb6e59;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #4a69bd;
+        }
+        
+        .socials a {
+            display: inline-block;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .socials a:hover {
+            color: #f8c291;
+        }
+        
+        .links ul {
+            list-style: none;
+        }
+        
+        .links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .links ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .links ul li a:hover {
+            color: #f8c291;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .sobre-content, .objetivos-content {
+                flex-direction: column;
+            }
+            
+            .sobre-text, .objetivos-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1>Conexão Saber</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#objetivos">Objetivos</a></li>
+                    <li><a href="#conteudos">Conteúdos</a></li>
+                    <li><a href="#inscrever">Por que Inscrever?</a></li>
+                    <li><a href="#vinheta">Nossa Vinheta</a></li>
+                    <li><a href="#newsletter">Newsletter</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div>
+                <h2>Conhecimento que Conecta</h2>
+                <p>Descubra um mundo de aprendizado contínuo com conteúdos educativos, curiosidades fascinantes e muito mais. Junte-se à nossa comunidade!</p>
+                <a href="https://youtube.com" target="_blank" class="btn">Inscreva-se no Canal</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2 class="section-title">Sobre o Canal</h2>
+            <div class="sobre-content">
+                <div class="sobre-text">
+                    <h3>O que é o Conexão Saber?</h3>
+                    <p>Fundamentação Legal: A Proposta do Projeto "Conexão Saber" está alinhado com os princípios da Lei de Diretrizes e Bases da Educação Nacional (LDB), Lei nº 9.394/96. A LDB, em seus artigos, fomenta uma educação que vai além da simples transmissão de conteúdo, incentivando o desenvolvimento integral do aluno, a autonomia, a interdisciplinaridade e a inserção social.</p>
+                    <p>A produção é colaborativa, multi e interdisciplinar, busca mobilizar toda a comunidade escolar nesse processo,  incentivando a participação e colaboração de todos para que o canal se efetive como uma ferramenta pedagógica dinâmica, lúdica, interativa e  comunicativa. </p>
+                </div>
+                <div class="sobre-img">
+                    <img src="loureiro.jpg" alt="Equipe do Conexão Saber">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objetivos -->
+    <section id="objetivos" class="objetivos">
+        <div class="container">
+            <h2 class="section-title">Nossos Objetivos</h2>
+            <div class="objetivos-content">
+                <div class="objetivos-text">
+                    <h3>Missão e Propósitos do Canal</h3>
+                    <p>Art. 2º: A educação, dever da família e do Estado, inspirada nos princípios de liberdade e nos ideais de solidariedade humana, tem por finalidade o pleno desenvolvimento do educando, seu preparo para o exercício da cidadania e sua qualificação para o trabalho. O projeto, ao estimular a participação ativa de alunos e professores na produção de conteúdo, desenvolve o senso crítico, a creatividade e a capacidade de trabalho em equipe, preparando os estudantes para a vida em sociedade.</p>
+                    
+                    <div class="objetivos-lista">
+                        <div class="objetivo-item">
+                            <div class="objetivo-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="objetivo-text">
+                                <h4>Educação Acessível</h4>
+                                <p>Incentivar a pesquisa, a organização de ideias e a comunicação eficaz.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="objetivo-item">
+                            <div class="objetivo-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="objetivo-text">
+                                <h4>Comunidade de Aprendizagem</h4>
+                                <p>Promover a interdisciplinaridade, conectando diferentes áreas do saber.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="objetivo-item">
+                            <div class="objetivo-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="objetivo-text">
+                                <h4>Pensamento Crítico</h4>
+                                <p>Incentivar a curiosidade e o espírito de investigação.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="objetivo-item">
+                            <div class="objetivo-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="objetivo-text">
+                                <h4>Formação Integral</h4>
+                                <p>Contribuir para a formação integral dos indivíduos, abordando aspectos cognitivos, emocionais e sociais.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="objetivos-img">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Objetivos do Conexão Saber">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdos -->
+    <section id="conteudos" class="conteudos">
+        <div class="container">
+            <h2 class="section-title">Nossos Conteúdos</h2>
+            <div class="videos">
+                <div class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ciência e Tecnologia">
+                    </div>
+                    <div class="video-info">
+                        <h3>Ciência e Tecnologia</h3>
+                        <p>Explore as últimas descobertas e inovações que estão moldando nosso futuro.</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Educação e Carreira">
+                    </div>
+                    <div class="video-info">
+                        <h3>Educação e Carreira</h3>
+                        <p>Dicas valiosas para seu desenvolvimento pessoal e profissional.</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cultura Geral">
+                    </div>
+                    <div class="video-info">
+                        <h3>Cultura Geral</h3>
+                        <p>Conheça diferentes culturas, história e curiosidades do mundo todo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por que Inscrever -->
+    <section id="inscrever" class="inscrever">
+        <div class="container">
+            <h2 class="section-title">Por que se Inscrever?</h2>
+            <div class="beneficios">
+                <div class="beneficio">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Conteúdo de Qualidade</h3>
+                    <p>Produzimos vídeos com informações precisas e fontes confiáveis.</p>
+                </div>
+                
+                <div class="beneficio">
+                    <i class="fas fa-users"></i>
+                    <h3>Comunidade Ativa</h3>
+                    <p>Participe de discussões enriquecedoras com nossa comunidade.</p>
+                </div>
+                
+                <div class="beneficio">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Postagens Regulares</h3>
+                    <p>Novos vídeos toda semana para seu aprendizado contínuo.</p>
+                </div>
+                
+                <div class="beneficio">
+                    <i class="fas fa-bell"></i>
+                    <h3>Notificações</h3>
+                    <p>Ative o sininho para não perder nenhum conteúdo novo!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nova Seção: Vinheta -->
+    <section id="vinheta" class="vinheta">
+        <div class="container">
+            <h2 class="section-title">Nossa Vinheta</h2>
+            <div class="vinheta-container">
+                <div class="vinheta-player">
+                    <!-- Substitua o src pelo link da sua vinheta -->
+                    <video controls poster="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+                        <source src="file:///tmp/guest-qjxrps/Downloads/conexao/VINHETA2.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+                <div class="vinheta-texto">
+                    <p>Nossa vinheta representa a identidade do Conexão Saber e o compromisso com a educação de qualidade. Ela é exibida no início de cada vídeo, simbolizando nossa missão de conectar pessoas através do conhecimento.</p>
+                    <p>Com elementos visuais que remetem à aprendizagem, conexão e inovação, a vinheta é uma marca registrada do nosso canal e reforça nosso posicionamento no universo educacional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="newsletter" class="newsletter">
+        <div class="container">
+            <h2 class="section-title">Fique por Dentro</h2>
+            <p>Cadastre-se em nossa newsletter para receber atualizações e conteúdos exclusivos!</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">Inscrever</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Conexão Saber</h3>
+                    <p>O canal que conecta você ao conhecimento de qualidade.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Redes Sociais</h3>
+                    <div class="socials">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#objetivos">Objetivos</a></li>
+                        <li><a href="#conteudos">Conteúdos</a></li>
+                        <li><a href="#inscrever">Por que Inscrever?</a></li>
+                        <li><a href="#vinheta">Nossa Vinheta</a></li>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Conexão Saber - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Simulação de inscrição na newsletter
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if(newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input').value;
+                alert(`Obrigado por se inscrever com o e-mail: ${email}! Em breve você receberá nossas novidades.`);
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
